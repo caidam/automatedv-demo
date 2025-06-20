@@ -110,7 +110,10 @@ uv run dbt deps
 ```bash
 alias dbt='uv run dbt'
 
-# then you can run your commands normally
+# check the alias
+alias dbt
+
+# then you can run your dbt commands normally
 dbt run -s tag:raw
 dbt run
 dbt test -s test_type:unit
