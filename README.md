@@ -1,8 +1,9 @@
 # Automatedv Demo Dataops
 
 <p align="center">
-  <img src="./misc/automatedv-demo-dataops.png" alt="screenshot of the Looker dashboard" width=600>
+  <img src="./misc/automatedv-demo-dataops.png" alt="screenshot of the Looker dashboard">
 </p>
+
 ___
 
 > [Looker Dasboard](https://lookerstudio.google.com/s/vN_cQWPGOr0)
