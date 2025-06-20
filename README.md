@@ -1,8 +1,15 @@
 # Automatedv Demo Dataops
 
-![Project's architecture schema](./misc/automatedv-demo-dataops.png)
+<p align="center">
+  <img src="./misc/automatedv-demo-dataops.png" alt="screenshot of the Looker dashboard" width=600>
+</p>
+___
 
-> [Looker Report](https://lookerstudio.google.com/s/vN_cQWPGOr0)
+> [Looker Dasboard](https://lookerstudio.google.com/s/vN_cQWPGOr0)
+
+<p align="center">
+  <img src="./misc/automatedv_looker_dashboard.png" alt="screenshot of the Looker dashboard" width=500>
+</p>
 
 ___
 
