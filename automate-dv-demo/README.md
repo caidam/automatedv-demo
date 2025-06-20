@@ -34,8 +34,6 @@ Check them out below:
 ```bash
 export DBT_PROFILES_DIR=/path/to/dbt_project
 
-export DBT_PROFILES_DIR=/home/constant/Documents/automatedv/automate-dv-demo
-
 ```
 
 ```bash
