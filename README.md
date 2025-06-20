@@ -14,7 +14,7 @@ ___
 
 ___
 
-This project builds on the official automatedv demo by implementing infrastructure management, basic data testing, and visualization:
+This project builds on the official [Automate DV demo](https://automate-dv.readthedocs.io/en/latest/worked_example/) by implementing infrastructure management, basic data testing, and visualization:
 
 - **Infrastructure Automation:** Terraform now automates the provisioning of resources for the Snowflake Data Warehouse, including the setup of an AWS S3 external stage.
 - **Data Transformation and Quality Assurance:** The dbt project has been enhanced with basic tests and unit tests, a first step towards robust and reliable transformation processes.
