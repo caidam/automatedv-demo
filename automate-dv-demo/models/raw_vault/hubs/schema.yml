@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: hub_customer
+    description: "Unique customers"
+    data_tests:
+      - dbt_utils.recency:
+          datepart: day
+          field: load_date
+          interval: 1
+          config:
+            severity: warn
+
+    columns:
+      - name: customer_pk
+        data_tests:
+          - not_null
+          - unique
+      - name: load_date
+        data_tests:
+          - date_sanity_check

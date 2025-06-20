@@ -1,0 +1,16 @@
+dbtvault_snowflake_demo:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: <account id>
+
+      user: <username>
+      password: <password>
+
+      role: SYSADMIN
+      database: DV_PROTOTYPE_DB2
+      warehouse: DV_PROTOTYPE_WH2
+      schema: DEMO
+      threads: 4
+      client_session_keep_alive: False

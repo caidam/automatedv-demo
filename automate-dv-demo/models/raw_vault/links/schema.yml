@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: link_customer_order
+    description: "Associates customers to orders"
+    columns:
+      - name: customer_pk
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: customer_pk
+      - name: order_pk
+        data_tests:
+          - relationships:
+              to: ref('hub_order')
+              field: order_pk

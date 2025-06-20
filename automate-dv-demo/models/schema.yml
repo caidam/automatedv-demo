@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: tpch_sample
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF{{ var('tpch_size', 10) }}
+    tables:
+      - name: LINEITEM
+      - name: CUSTOMER
+      - name: ORDERS
+      - name: PARTSUPP
+      - name: SUPPLIER
+      - name: PART
+      - name: NATION
+      - name: REGION
+
+  - name: s3_dv_stage
+    database: DV_PROTOTYPE_DB2
+    schema: PUBLIC
+    tables:
+      - name: NATION
+        identifier: s3_dv_stage/tpch_sf10_nation.csv
+        description: "Nation data from tpch_10_nation.csv stored in the S3 stage."
+      - name: REGION
+        identifier: s3_dv_stage/tpch_sf10_region.csv
+        description: "Region data from tpch_10_region.csv stored in the S3 stage."

@@ -1,0 +1,15 @@
+version: 2
+
+unit_tests:
+  - name: test_nation_name_transformation
+    model: raw_nation_enhanced
+    description: "Ensure that nation names are converted to lowercase correctly."
+    given:
+      - input: ref('raw_nation')
+        rows:
+          - { N_NATIONKEY: 0, N_NAME: 'ALGERIA', N_REGIONKEY: 0, N_COMMENT: 'desc for algeria' }
+          - { N_NATIONKEY: 2, N_NAME: 'NARNIA', N_REGIONKEY: 1, N_COMMENT: 'random text' }
+    expect:
+      rows:
+        - { N_NATIONKEY: 0, N_NAME: 'ALGERIA', N_NAME_LOWER: 'algeria', N_REGIONKEY: 0, N_COMMENT: 'desc for algeria' }
+        - { N_NATIONKEY: 2, N_NAME: 'NARNIA', N_NAME_LOWER: 'narnia', N_REGIONKEY: 1, N_COMMENT: 'random text' }
