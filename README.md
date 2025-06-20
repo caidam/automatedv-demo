@@ -19,10 +19,13 @@ ___
 
 ### Clone this repo
 
+```bash
+git clone https://github.com/caidam/automatedv-demo.git
+```
+
 ### Set Up Terraform
 
-Follow steps from [readme in terraform folder](/terraform/README.md)
-generate ssh keys, create and configure service user in snowflake
+Follow steps from [readme in terraform folder](/terraform/README.md) to generate ssh keys, create and configure service user in snowflake
 
 create and populate `terraform.tfvars` file following `terraform.tfvars.template` structure
 
@@ -31,14 +34,21 @@ terraform init
 terraform validate
 terraform apply
 ```
-
+clean up when you're done experimenting:
+```bash
+terraform destroy
+```
 ### Set Up dbt
+
+Move to the dbt project folder
+```bash
+cd automate-dv-demo
+```
 
 - Create `profiles.yml` file following `profiles.yml.template` structure
 - update `DBT_PROFILES_DIR` with `profiles.yml`'s path
 
 ```bash
-cd automate-dv-demo
 export DBT_PROFILES_DIR=$(pwd)
 ```
 
@@ -47,18 +57,26 @@ export DBT_PROFILES_DIR=$(pwd)
 - Sync uv and test
 
 ```bash
-cd automate-dv-demo
 uv sync
 uv run dbt debug
 ```
 
 - Or initialize uv from scratch
 
-Init uv project inside existing folder with relevant python version
+Make sure you are in the dbt project folder
 ```bash
 cd automate-dv-demo
-uv init --python 3.9
+```
 
+Reset uv project:
+```bash
+rm pyproject.toml uv.lock .python-version
+rm -rf .venv
+```
+
+Init uv project inside existing folder with relevant python version
+```bash
+uv init --python 3.9 # use this version to avoid compatibility issues
 ```
 
 Install dependencies
