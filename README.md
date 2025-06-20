@@ -1,6 +1,21 @@
-[Looker Report](https://lookerstudio.google.com/s/vN_cQWPGOr0)
+# Automatedv Demo Dataops
 
-## Set up
+![Project's architecture schema](./misc/automatedv-demo-dataops.png)
+
+> [Looker Report](https://lookerstudio.google.com/s/vN_cQWPGOr0)
+
+___
+
+This project builds on the official automatedv demo by implementing infrastructure management, basic data testing, and visualization:
+
+- **Infrastructure Automation:** Terraform now automates the provisioning of resources for the Snowflake Data Warehouse, including the setup of an AWS S3 external stage.
+- **Data Transformation and Quality Assurance:** The dbt project has been enhanced with basic tests and unit tests, a first step towards robust and reliable transformation processes.
+- **Visualization Integration:** A basic dashboard has been integrated through Looker Studio, enabling straightforward and immediate data visualization.
+- **Efficient Package Management:** Integration of uv as a package manager streamlines package and version management, enhancing overall project maintainability.
+___
+
+
+## Run The Project
 
 ### Clone this repo
 
@@ -11,10 +26,16 @@ generate ssh keys, create and configure service user in snowflake
 
 create and populate `terraform.tfvars` file following `terraform.tfvars.template` structure
 
+```bash
+terraform init
+terraform validate
+terraform apply
+```
+
 ### Set Up dbt
 
 - Create `profiles.yml` file following `profiles.yml.template` structure
-- export `profiles.yml`
+- update `DBT_PROFILES_DIR` with `profiles.yml`'s path
 
 ```bash
 cd automate-dv-demo
@@ -26,11 +47,12 @@ export DBT_PROFILES_DIR=$(pwd)
 - Sync uv and test
 
 ```bash
+cd automate-dv-demo
 uv sync
 uv run dbt debug
 ```
 
-> uv
+- Or initialize uv from scratch
 
 Init uv project inside existing folder with relevant python version
 ```bash
@@ -45,9 +67,25 @@ uv add dbt-core dbt-snowflake
 uv sync
 ```
 
-test dbt is working
+- Start working with dbt
+
+Make sure to run your command in the correct directory.
+> In VSCode, you may need to update your python interpreter, point it to the `.venv` created by uv.
+
+Test dbt is working
 ```bash
 uv run dbt --version
 uv run dbt debug
 uv run dbt deps
+```
+
+> useful tip: alias the `uv run dbt` command
+
+```bash
+alias dbt='uv run dbt'
+
+# then you can run your commands normally
+dbt run -s tag:raw
+dbt run
+dbt test -s test_type:unit
 ```
